@@ -110,6 +110,8 @@ public class RestController {
 21:26:23.004 |  WARN | (nio-8080-exec-2) | [SpringLoggingProjectApplication] : WARN : Hi Anupama, Logging a message here...; | uri=/log; endpoint=logMessage; queryString=;
 21:26:23.064 |  INFO | (nio-8080-exec-2) | [LoggingInterceptor] : Request Completed; execTime=87ms; | uri=/log; endpoint=logMessage; queryString=;
 ```
+ 
+* This creates a directory log in project path and creates application.log as mentioned in xml file
 
 ## Asynchronous Logging
 * LMAX disruptor dependency is used
