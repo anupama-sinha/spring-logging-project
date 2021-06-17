@@ -60,25 +60,27 @@ logging.level.com.anupama.sinha=ERROR
 * Log Statements
 
 ## Log4J2
-* Async Logging
+* Adding below dependency in pom.xml
 
 ```xml
-        <dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-			<exclusions>
-				<exclusion>
-					<groupId>org.springframework.boot</groupId>
-					<artifactId>spring-boot-starter-logging</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-log4j2</artifactId>
-			<version>2.3.4.RELEASE</version>
-		</dependency>
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-web</artifactId>
+	<exclusions>
+	    <exclusion>
+	        <groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-logging</artifactId>
+		</exclusion>
+	</exclusions>
+</dependency>
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-log4j2</artifactId>
+		<version>2.3.4.RELEASE</version>
+</dependency>
 ```
+
+* Simple Logging in any class
 
 ```java 
 public class RestController {
@@ -93,11 +95,13 @@ public class RestController {
 }
 ```
 
+* Logging format as below
+
 ```text
 2021-06-13 18:11:38.860  INFO 36336 --- [nio-8080-exec-1] c.a.s.SpringLoggingProjectApplication    : Hi Anupama, Logging a message here...
 ```
 
-* Now, add log4j2.xml in src/main/resources and check logging format
+* Now, add [log4j2.xml](https://github.com/anupama-sinha/spring-logging-project/blob/master/src/main/resources/log4j2.xml_) in src/main/resources and check logging format
 
 ```text
 21:26:22.979 |  INFO | (nio-8080-exec-2) | [LoggingInterceptor] : Incoming Request; | uri=/log; endpoint=logMessage; queryString=;
