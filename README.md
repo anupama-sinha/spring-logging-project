@@ -2,6 +2,14 @@
 * Configurable
 * Log levels
 * Log destination
+* Able to analyze bugs and perform Data Analytics
+
+## Centralized vs Decentralized Logging
+* Depends on architecture which is built
+* Write to DB & perform SQL to check type of log. Or use ELK framework & Splunk Architecture to perform analytics
+* Performance hit on synchronizing file access between multiple modules & file lock
+* Logs are queued or cached in RAM first and then dumped to disk in sequence as write speed allows
+* Fishtag or Sleuth used for assigning unique IDs to logs to keep consitency across microservices
 
 ## History
 * JDK 1.4 : java.util.logging has Loggers, Handlers
