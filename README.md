@@ -10,6 +10,7 @@
 * Performance hit on synchronizing file access between multiple modules & file lock
 * Logs are queued or cached in RAM first and then dumped to disk in sequence as write speed allows
 * Fishtag or Sleuth used for assigning unique IDs to logs to keep consitency across microservices
+* Microservices architecture reduces overhead of log file size. Even SQL Partitioning can be done for logging
 
 ## History
 * JDK 1.4 : java.util.logging has Loggers, Handlers
@@ -18,6 +19,9 @@
 * Introduction of Facade Library : Apache Commons, SLF4J(Most common). Implementation needed with other libraries
 * Implementation Library with SLF4J support also : Logback, Log4J2
 
+## Advantages of using Facade Library/Standard Specificiations
+* Any need for change won't require effort to change methods accordingly for implementation library. Instead an interface facade library takes care of the same. And a single dependency change does the job
+
 ## Log4J2 advantages over Logback
 * Lazy Loading messages
 * Async Logging
@@ -25,7 +29,8 @@
 ## Spring Boot Logging
 * spring-boot-starter-web -> Pulls spring-boot-starter-logging -> Pulls spring-jcl(Spring Commons Logging Bridge)
 * Logback : Successor of Log4j
-
+* Can be checked using mvn dependency:tree
+* 
 ## Supported Log Levels
 * SLF4J : FATAL > ERROR > WARN > INFO > DEBUG > TRACE
 * [Check others here](https://www.javacodegeeks.com/java-logging-tutorials)
@@ -109,7 +114,11 @@ public class RestController {
 2021-06-13 18:11:38.860  INFO 36336 --- [nio-8080-exec-1] c.a.s.SpringLoggingProjectApplication    : Hi Anupama, Logging a message here...
 ```
 
-* Now, add [log4j2.xml](https://github.com/anupama-sinha/spring-logging-project/blob/master/src/main/resources/log4j2.xml_) in src/main/resources and check logging format
+* Now, add [log4j2.xml](https://github.com/anupama-sinha/spring-logging-project/blob/master/src/main/resources/log4j2.xml) in src/main/resources and check logging format
+* Significance of below format : %d : Date, %p : Priority(Logging Severity), %t : Thread, %c : Class, %n : New Line, And rest uri & endpoint configured using Logging Interceptor and registering the same for WebMvcConfigurer registry
+
+>  %d{HH:mm:ss.SSS} | %5p | (%15.15t) | [%c{1}] : %m; | uri=%X{URI}; endpoint=%X{ENDPOINT}; queryString=%X{QUERYSTRING};%n
+
 
 ```text
 21:26:22.979 |  INFO | (nio-8080-exec-2) | [LoggingInterceptor] : Incoming Request; | uri=/log; endpoint=logMessage; queryString=;
