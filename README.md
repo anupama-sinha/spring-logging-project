@@ -1,3 +1,6 @@
+## Myth for Logging
+* Writing log.info is just a tip of an iceberg. Rather, what we must see is architecture of the project, reasons for logging(Support, Data Analytics, Security Checks, Application Issues, Functional Bugs, Ticket Creation, etc), logging architecture(Centralized/Decentralized,Partionioned/SOA/Microservices, Implementaion Library, Different Application Tech Stacks and sync ups)
+
 ## Need for Logging
 * Configurable
 * Log levels
